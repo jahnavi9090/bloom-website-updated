@@ -1,0 +1,323 @@
+/* Responsive Design Variables */
+:root {
+    --breakpoint-xs: 320px;
+    --breakpoint-sm: 576px;
+    --breakpoint-md: 768px;
+    --breakpoint-lg: 992px;
+    --breakpoint-xl: 1200px;
+    --breakpoint-xxl: 1400px;
+}
+
+/* Base Mobile Styles (320px and up) */
+@media screen and (min-width: 320px) {
+    /* Typography */
+    html {
+        font-size: 14px;
+    }
+
+    h1 {
+        font-size: clamp(2rem, 8vw, 2.5rem);
+    }
+
+    h2 {
+        font-size: clamp(1.75rem, 6vw, 2rem);
+    }
+
+    /* Layout */
+    .container {
+        padding: 0 1rem;
+    }
+
+    .scroll-section {
+        padding: 4rem 1rem;
+    }
+
+    /* Navigation */
+    .nav-container {
+        padding: 0 1rem;
+    }
+
+    .nav-links {
+        display: none;
+    }
+
+    .menu-toggle {
+        display: flex;
+    }
+
+    /* Content */
+    .content-wrapper {
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .image-wrapper {
+        order: -1;
+        height: 250px;
+    }
+}
+
+/* Small devices (576px and up) */
+@media screen and (min-width: 576px) {
+    html {
+        font-size: 15px;
+    }
+
+    .container {
+        padding: 0 1.5rem;
+    }
+
+    .image-wrapper {
+        height: 300px;
+    }
+
+    /* Grid Systems */
+    .grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+
+    /* Cards */
+    .card-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Medium devices (768px and up) */
+@media screen and (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+
+    /* Navigation */
+    .nav-links {
+        display: flex;
+    }
+
+    .menu-toggle {
+        display: none;
+    }
+
+    /* Layout */
+    .content-wrapper {
+        flex-direction: row;
+        text-align: left;
+        gap: 4rem;
+    }
+
+    .image-wrapper {
+        order: 0;
+        height: auto;
+    }
+
+    /* Grid Systems */
+    .grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+    }
+
+    /* Forms */
+    .form-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+    }
+}
+
+/* Large devices (992px and up) */
+@media screen and (min-width: 992px) {
+    .container {
+        padding: 0 2rem;
+    }
+
+    /* Grid Systems */
+    .grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    /* Cards */
+    .card-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    /* Hero Sections */
+    .hero-content {
+        max-width: 50%;
+    }
+}
+
+/* Extra large devices (1200px and up) */
+@media screen and (min-width: 1200px) {
+    .container {
+        max-width: var(--breakpoint-xl);
+        margin: 0 auto;
+    }
+
+    /* Grid Systems */
+    .grid-xl {
+        grid-template-columns: repeat(5, 1fr);
+    }
+}
+
+/* XXL devices (1400px and up) */
+@media screen and (min-width: 1400px) {
+    .container {
+        max-width: var(--breakpoint-xxl);
+    }
+}
+
+/* Landscape Mode */
+@media screen and (orientation: landscape) and (max-height: 500px) {
+    .scroll-section {
+        min-height: auto;
+        padding: 3rem 1rem;
+    }
+
+    .nav-links.active {
+        max-height: 80vh;
+        overflow-y: auto;
+    }
+}
+
+/* High-DPI Screens */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .image-wrapper img {
+        image-rendering: -webkit-optimize-contrast;
+    }
+}
+
+/* Dark Mode */
+@media (prefers-color-scheme: dark) {
+    .card {
+        background: #2a2a2a;
+    }
+
+    .nav-links.active {
+        background: #1a1a1a;
+    }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation: none !important;
+        transition: none !important;
+    }
+}
+
+/* Print Styles */
+@media print {
+    .nav-container,
+    .menu-toggle,
+    .scroll-progress {
+        display: none;
+    }
+
+    .content-wrapper {
+        display: block;
+    }
+
+    .image-wrapper {
+        page-break-inside: avoid;
+    }
+}
+
+/* Device-Specific Styles */
+
+/* iPhone X and newer */
+@supports (padding: max(0px)) {
+    .nav-container {
+        padding-left: max(1rem, env(safe-area-inset-left));
+        padding-right: max(1rem, env(safe-area-inset-right));
+    }
+}
+
+/* Foldable Devices */
+@media (spanning: single-fold-vertical) {
+    .content-wrapper {
+        flex-direction: column;
+    }
+}
+
+/* Hover Capabilities */
+@media (hover: hover) {
+    .nav-links a:hover {
+        color: var(--primary-color);
+    }
+
+    .btn:hover {
+        transform: translateY(-2px);
+    }
+
+    .card:hover {
+        transform: translateY(-5px);
+    }
+}
+
+/* Touch Devices */
+@media (hover: none) {
+    .btn:active {
+        transform: translateY(1px);
+    }
+
+    .card {
+        transition: none;
+    }
+}
+
+/* Utility Classes for Responsive Design */
+.hide-xs {
+    display: none;
+}
+
+@media screen and (min-width: 576px) {
+    .hide-sm {
+        display: none;
+    }
+    .show-sm {
+        display: block;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .hide-md {
+        display: none;
+    }
+    .show-md {
+        display: block;
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .hide-lg {
+        display: none;
+    }
+    .show-lg {
+        display: block;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .hide-xl {
+        display: none;
+    }
+    .show-xl {
+        display: block;
+    }
+}
+
+/* Responsive Spacing */
+@media screen and (max-width: 768px) {
+    .m-sm-0 { margin: 0 !important; }
+    .mt-sm-0 { margin-top: 0 !important; }
+    .mb-sm-0 { margin-bottom: 0 !important; }
+    .p-sm-0 { padding: 0 !important; }
+    .pt-sm-0 { padding-top: 0 !important; }
+    .pb-sm-0 { padding-bottom: 0 !important; }
+}
+
+/* Responsive Text Alignment */
+@media screen and (max-width: 768px) {
+    .text-sm-center { text-align: center !important; }
+    .text-sm-left { text-align: left !important; }
+    .text-sm-right { text-align: right !important; }
+}
