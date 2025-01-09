@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services - Digital Wellness Platform</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/navigation.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <style>
+        /* Page-specific styles */
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .service-card {
+            text-align: center;
+            padding: 2.5rem 2rem;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--primary-color);
+            border-radius: 50%;
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .pricing-card {
+            text-align: center;
+            padding: 2.5rem 2rem;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .pricing-card.popular {
+            border: 2px solid var(--primary-color);
+            transform: scale(1.05);
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .pricing-card.popular:hover {
+            transform: scale(1.05) translateY(-5px);
+        }
+
+        .price {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin: 1.5rem 0;
+        }
+
+        .price span {
+            font-size: 1rem;
+            color: var(--text-color);
+        }
+
+        .feature-list {
+            list-style: none;
+            padding: 0;
+            margin: 2rem 0;
+        }
+
+        .feature-list li {
+            margin: 0.75rem 0;
+            color: var(--text-color);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="index.html" class="logo">Bloom</a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="services.html" class="active">Services</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <div class="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="scroll-container">
+        <!-- Hero Section -->
+        <section class="scroll-section">
+            <div class="content-wrapper">
+                <div class="text-content">
+                    <h1>Our Services</h1>
+                    <p>Discover comprehensive solutions designed to enhance your digital wellness journey.</p>
+                    <a href="contact.html" class="btn btn-primary">Get Started</a>
+                </div>
+                <div class="image-wrapper">
+                    <img src="https://images.unsplash.com/photo-1552581234-26160f608093?w=500&q=80" 
+                         alt="Our Services"
+                         width="500"
+                         height="300"
+                         loading="lazy">
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Grid -->
+        <section class="scroll-section" style="background: #f8f9fa;">
+            <div class="content-wrapper">
+                <div class="text-content" style="text-align: center; flex: 100%;">
+                    <h2>What We Offer</h2>
+                    <p>Tailored solutions for your digital wellness needs</p>
+                    <div class="service-grid">
+                        <div class="service-card">
+                            <div class="service-icon">📱</div>
+                            <h3>Screen Time Management</h3>
+                            <p>Track and optimize your daily device usage with smart analytics and personalized recommendations.</p>
+                            <a href="contact.html" class="btn btn-primary">Learn More</a>
+                        </div>
+                        <div class="service-card">
+                            <div class="service-icon">🧘</div>
+                            <h3>Digital Mindfulness</h3>
+                            <p>Practice mindfulness techniques and develop healthy digital habits with guided sessions.</p>
+                            <a href="contact.html" class="btn btn-primary">Learn More</a>
+                        </div>
+                        <div class="service-card">
+                            <div class="service-icon">👥</div>
+                            <h3>Community Support</h3>
+                            <p>Connect with like-minded individuals and share experiences in our supportive community.</p>
+                            <a href="contact.html" class="btn btn-primary">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pricing Section -->
+        <section class="scroll-section">
+            <div class="content-wrapper">
+                <div class="text-content" style="text-align: center; flex: 100%;">
+                    <h2>Pricing Plans</h2>
+                    <p>Choose the perfect plan for your needs</p>
+                    <div class="pricing-grid">
+                        <div class="pricing-card">
+                            <h3>Basic</h3>
+                            <div class="price">$9<span>/month</span></div>
+                            <ul class="feature-list">
+                                <li>Basic Screen Time Tracking</li>
+                                <li>Daily Wellness Tips</li>
+                                <li>Community Access</li>
+                                <li>Email Support</li>
+                            </ul>
+                            <a href="contact.html" class="btn btn-primary">Get Started</a>
+                        </div>
+                        <div class="pricing-card popular">
+                            <h3>Pro</h3>
+                            <div class="price">$19<span>/month</span></div>
+                            <ul class="feature-list">
+                                <li>Advanced Analytics</li>
+                                <li>Personalized Plans</li>
+                                <li>Group Sessions</li>
+                                <li>Priority Support</li>
+                            </ul>
+                            <a href="contact.html" class="btn btn-primary">Get Started</a>
+                        </div>
+                        <div class="pricing-card">
+                            <h3>Enterprise</h3>
+                            <div class="price">$49<span>/month</span></div>
+                            <ul class="feature-list">
+                                <li>Custom Solutions</li>
+                                <li>API Access</li>
+                                <li>Dedicated Support</li>
+                                <li>Team Management</li>
+                            </ul>
+                            <a href="contact.html" class="btn btn-primary">Contact Us</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Call to Action -->
+        <section class="scroll-section" style="background: #f8f9fa;">
+            <div class="content-wrapper">
+                <div class="text-content">
+                    <h2>Ready to Get Started?</h2>
+                    <p>Join thousands of users who have transformed their digital wellness journey with us.</p>
+                    <a href="contact.html" class="btn btn-primary">Contact Us Today</a>
+                </div>
+                <div class="image-wrapper">
+                    <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?w=500&q=80" 
+                         alt="Get Started"
+                         width="500"
+                         height="300"
+                         loading="lazy">
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script src="js/app.js" type="module"></script>
+    <script src="js/navigation.js" type="module"></script>
+    <script src="js/scroll-animation.js" type="module"></script>
+</body>
+</html>
