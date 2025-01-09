@@ -3,233 +3,366 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Services - Digital Wellness Platform</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/navigation.css">
-    <link rel="stylesheet" href="css/responsive.css">
+    <title>Services - Bloom Digital Wellness</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        /* Page-specific styles */
-        .service-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #0a0a0a;
+            color: #ffffff;
+            line-height: 1.6;
+        }
+
+        /* Navigation - Same as other pages */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 1.5rem 2rem;
+            background: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .logo:hover {
+            color: #6C63FF;
+        }
+
+        .nav-links {
+            display: flex;
             gap: 2rem;
-            margin-top: 3rem;
         }
 
-        .service-card {
-            text-align: center;
-            padding: 2.5rem 2rem;
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            position: relative;
         }
 
-        .service-card:hover {
-            transform: translateY(-5px);
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #6C63FF;
+            transition: width 0.3s ease;
         }
 
-        .service-icon {
-            width: 60px;
-            height: 60px;
-            margin: 0 auto 1.5rem;
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Services Styles */
+        .services-hero {
+            padding: 8rem 2rem 4rem;
+            background: linear-gradient(45deg, #0a0a0a, #1a1a1a);
+            min-height: 60vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: var(--primary-color);
-            border-radius: 50%;
-            color: white;
+            text-align: center;
+        }
+
+        .services-hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 1s ease;
+        }
+
+        .services-hero p {
+            max-width: 600px;
+            margin: 0 auto;
+            color: #aaa;
+            font-size: 1.2rem;
+            animation: fadeInUp 1s ease 0.2s backwards;
+        }
+
+        /* Services Grid */
+        .services-grid {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: #1a1a1a;
+            border-radius: 20px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+            animation: fadeInUp 1s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .service-image {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .service-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .service-card:hover .service-image img {
+            transform: scale(1.1);
+        }
+
+        .service-content {
+            padding: 2rem;
+        }
+
+        .service-content h3 {
             font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #6C63FF;
+        }
+
+        .service-content p {
+            color: #aaa;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-features {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .service-features li {
+            margin-bottom: 0.5rem;
+            color: #888;
+            display: flex;
+            align-items: center;
+        }
+
+        .service-features li i {
+            color: #6C63FF;
+            margin-right: 0.5rem;
+        }
+
+        /* Pricing Section */
+        .pricing-section {
+            padding: 4rem 2rem;
+            background: #0d0d0d;
         }
 
         .pricing-grid {
+            max-width: 1200px;
+            margin: 3rem auto 0;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
-            margin-top: 3rem;
         }
 
         .pricing-card {
+            background: #1a1a1a;
+            border-radius: 20px;
+            padding: 2rem;
             text-align: center;
-            padding: 2.5rem 2rem;
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
             transition: transform 0.3s ease;
         }
 
-        .pricing-card.popular {
-            border: 2px solid var(--primary-color);
-            transform: scale(1.05);
-        }
-
         .pricing-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .pricing-card.popular:hover {
-            transform: scale(1.05) translateY(-5px);
+            transform: translateY(-10px);
+            background: #222;
         }
 
         .price {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--primary-color);
-            margin: 1.5rem 0;
+            font-size: 3rem;
+            color: #6C63FF;
+            margin: 1rem 0;
         }
 
         .price span {
             font-size: 1rem;
-            color: var(--text-color);
+            color: #aaa;
         }
 
-        .feature-list {
-            list-style: none;
-            padding: 0;
-            margin: 2rem 0;
+        /* Button Styles */
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: #6C63FF;
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
         }
 
-        .feature-list li {
-            margin: 0.75rem 0;
-            color: var(--text-color);
+        .btn:hover {
+            background: #5b52ff;
+            transform: translateY(-2px);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav {
+                padding: 1rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .services-grid,
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 <body>
     <!-- Navigation -->
-    <nav class="main-nav">
-        <div class="nav-container">
-            <a href="index.html" class="logo">Bloom</a>
-            <div class="nav-links">
-                <a href="index.html">Home</a>
-                <a href="about.html">About</a>
-                <a href="services.html" class="active">Services</a>
-                <a href="contact.html">Contact</a>
-            </div>
-            <div class="menu-toggle">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
+    <nav class="nav">
+        <a href="index.html" class="logo">Bloom</a>
+        <div class="nav-links">
+            <a href="about.html">About</a>
+            <a href="services.html">Services</a>
+            <a href="contact.html">Contact</a>
         </div>
     </nav>
 
-    <!-- Main Content -->
-    <div class="scroll-container">
-        <!-- Hero Section -->
-        <section class="scroll-section">
-            <div class="content-wrapper">
-                <div class="text-content">
-                    <h1>Our Services</h1>
-                    <p>Discover comprehensive solutions designed to enhance your digital wellness journey.</p>
-                    <a href="contact.html" class="btn btn-primary">Get Started</a>
-                </div>
-                <div class="image-wrapper">
-                    <img src="https://images.unsplash.com/photo-1552581234-26160f608093?w=500&q=80" 
-                         alt="Our Services"
-                         width="500"
-                         height="300"
-                         loading="lazy">
-                </div>
-            </div>
-        </section>
+    <!-- Services Hero -->
+    <section class="services-hero">
+        <div>
+            <h1>Our Services</h1>
+            <p>Comprehensive digital wellness solutions tailored to your needs</p>
+        </div>
+    </section>
 
-        <!-- Services Grid -->
-        <section class="scroll-section" style="background: #f8f9fa;">
-            <div class="content-wrapper">
-                <div class="text-content" style="text-align: center; flex: 100%;">
-                    <h2>What We Offer</h2>
-                    <p>Tailored solutions for your digital wellness needs</p>
-                    <div class="service-grid">
-                        <div class="service-card">
-                            <div class="service-icon">📱</div>
-                            <h3>Screen Time Management</h3>
-                            <p>Track and optimize your daily device usage with smart analytics and personalized recommendations.</p>
-                            <a href="contact.html" class="btn btn-primary">Learn More</a>
-                        </div>
-                        <div class="service-card">
-                            <div class="service-icon">🧘</div>
-                            <h3>Digital Mindfulness</h3>
-                            <p>Practice mindfulness techniques and develop healthy digital habits with guided sessions.</p>
-                            <a href="contact.html" class="btn btn-primary">Learn More</a>
-                        </div>
-                        <div class="service-card">
-                            <div class="service-icon">👥</div>
-                            <h3>Community Support</h3>
-                            <p>Connect with like-minded individuals and share experiences in our supportive community.</p>
-                            <a href="contact.html" class="btn btn-primary">Learn More</a>
-                        </div>
-                    </div>
-                </div>
+    <!-- Services Grid -->
+    <section class="services-grid">
+        <div class="service-card">
+            <div class="service-image">
+                <img src="https://images.unsplash.com/photo-1434494878577-86c23bcb06b9?w=600&q=80" 
+                     alt="Personal Assessment"
+                     loading="lazy">
             </div>
-        </section>
-
-        <!-- Pricing Section -->
-        <section class="scroll-section">
-            <div class="content-wrapper">
-                <div class="text-content" style="text-align: center; flex: 100%;">
-                    <h2>Pricing Plans</h2>
-                    <p>Choose the perfect plan for your needs</p>
-                    <div class="pricing-grid">
-                        <div class="pricing-card">
-                            <h3>Basic</h3>
-                            <div class="price">$9<span>/month</span></div>
-                            <ul class="feature-list">
-                                <li>Basic Screen Time Tracking</li>
-                                <li>Daily Wellness Tips</li>
-                                <li>Community Access</li>
-                                <li>Email Support</li>
-                            </ul>
-                            <a href="contact.html" class="btn btn-primary">Get Started</a>
-                        </div>
-                        <div class="pricing-card popular">
-                            <h3>Pro</h3>
-                            <div class="price">$19<span>/month</span></div>
-                            <ul class="feature-list">
-                                <li>Advanced Analytics</li>
-                                <li>Personalized Plans</li>
-                                <li>Group Sessions</li>
-                                <li>Priority Support</li>
-                            </ul>
-                            <a href="contact.html" class="btn btn-primary">Get Started</a>
-                        </div>
-                        <div class="pricing-card">
-                            <h3>Enterprise</h3>
-                            <div class="price">$49<span>/month</span></div>
-                            <ul class="feature-list">
-                                <li>Custom Solutions</li>
-                                <li>API Access</li>
-                                <li>Dedicated Support</li>
-                                <li>Team Management</li>
-                            </ul>
-                            <a href="contact.html" class="btn btn-primary">Contact Us</a>
-                        </div>
-                    </div>
-                </div>
+            <div class="service-content">
+                <h3>Personal Assessment</h3>
+                <p>Comprehensive analysis of your digital habits and patterns.</p>
+                <ul class="service-features">
+                    <li><i class="fas fa-check"></i> Detailed usage analysis</li>
+                    <li><i class="fas fa-check"></i> Personalized recommendations</li>
+                    <li><i class="fas fa-check"></i> Progress tracking</li>
+                </ul>
             </div>
-        </section>
+        </div>
 
-        <!-- Call to Action -->
-        <section class="scroll-section" style="background: #f8f9fa;">
-            <div class="content-wrapper">
-                <div class="text-content">
-                    <h2>Ready to Get Started?</h2>
-                    <p>Join thousands of users who have transformed their digital wellness journey with us.</p>
-                    <a href="contact.html" class="btn btn-primary">Contact Us Today</a>
-                </div>
-                <div class="image-wrapper">
-                    <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?w=500&q=80" 
-                         alt="Get Started"
-                         width="500"
-                         height="300"
-                         loading="lazy">
-                </div>
+        <div class="service-card">
+            <div class="service-image">
+                <img src="https://images.unsplash.com/photo-1542435503-956c469947f6?w=600&q=80" 
+                     alt="Coaching Sessions"
+                     loading="lazy">
             </div>
-        </section>
-    </div>
+            <div class="service-content">
+                <h3>1-on-1 Coaching</h3>
+                <p>Personal guidance from digital wellness experts.</p>
+                <ul class="service-features">
+                    <li><i class="fas fa-check"></i> Expert consultation</li>
+                    <li><i class="fas fa-check"></i> Custom action plans</li>
+                    <li><i class="fas fa-check"></i> Regular check-ins</li>
+                </ul>
+            </div>
+        </div>
 
-    <script src="js/app.js" type="module"></script>
-    <script src="js/navigation.js" type="module"></script>
-    <script src="js/scroll-animation.js" type="module"></script>
+        <div class="service-card">
+            <div class="service-image">
+                <img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=600&q=80" 
+                     alt="Corporate Programs"
+                     loading="lazy">
+            </div>
+            <div class="service-content">
+                <h3>Corporate Wellness</h3>
+                <p>Digital wellness programs for organizations.</p>
+                <ul class="service-features">
+                    <li><i class="fas fa-check"></i> Team workshops</li>
+                    <li><i class="fas fa-check"></i> Policy development</li>
+                    <li><i class="fas fa-check"></i> Progress reporting</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing-section">
+        <div class="pricing-grid">
+            <div class="pricing-card">
+                <h3>Starter</h3>
+                <div class="price">$29<span>/month</span></div>
+                <ul class="service-features">
+                    <li><i class="fas fa-check"></i> Basic Assessment</li>
+                    <li><i class="fas fa-check"></i> Weekly Reports</li>
+                    <li><i class="fas fa-check"></i> Email Support</li>
+                </ul>
+                <a href="contact.html" class="btn">Get Started</a>
+            </div>
+
+            <div class="pricing-card">
+                <h3>Professional</h3>
+                <div class="price">$79<span>/month</span></div>
+                <ul class="service-features">
+                    <li><i class="fas fa-check"></i> Advanced Assessment</li>
+                    <li><i class="fas fa-check"></i> Daily Reports</li>
+                    <li><i class="fas fa-check"></i> 2 Coaching Sessions</li>
+                </ul>
+                <a href="contact.html" class="btn">Get Started</a>
+            </div>
+
+            <div class="pricing-card">
+                <h3>Enterprise</h3>
+                <div class="price">Custom</div>
+                <ul class="service-features">
+                    <li><i class="fas fa-check"></i> Full Team Assessment</li>
+                    <li><i class="fas fa-check"></i> Custom Reporting</li>
+                    <li><i class="fas fa-check"></i> Dedicated Support</li>
+                </ul>
+                <a href="contact.html" class="btn">Contact Us</a>
+            </div>
+        </div>
+    </section>
 </body>
 </html>
