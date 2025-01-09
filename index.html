@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bloom - Digital Wellness Platform</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        /* Reset and Base Styles */
         * {
             margin: 0;
             padding: 0;
@@ -13,87 +13,37 @@
         }
 
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Arial', sans-serif;
+            background: #0a0a0a;
+            color: #ffffff;
             line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        /* Animation Keyframes */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes fadeInLeft {
-            from {
-                opacity: 0;
-                transform: translateX(-50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        @keyframes fadeInRight {
-            from {
-                opacity: 0;
-                transform: translateX(50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        @keyframes scaleIn {
-            from {
-                opacity: 0;
-                transform: scale(0.9);
-            }
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
         }
 
         /* Navigation */
-        .main-nav {
+        .nav {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            background: #ffffff;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 1.5rem 2rem;
+            background: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(10px);
             z-index: 1000;
-            transition: all 0.3s ease;
-        }
-
-        .nav-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1rem 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
         }
 
         .logo {
-            font-size: 1.5rem;
+            font-size: 2rem;
             font-weight: bold;
+            color: #fff;
             text-decoration: none;
-            color: #333;
             transition: color 0.3s ease;
         }
 
         .logo:hover {
-            color: #007bff;
+            color: #6C63FF;
         }
 
         .nav-links {
@@ -102,11 +52,11 @@
         }
 
         .nav-links a {
+            color: #fff;
             text-decoration: none;
-            color: #333;
-            font-weight: 500;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
             position: relative;
-            transition: color 0.3s ease;
         }
 
         .nav-links a::after {
@@ -116,291 +66,265 @@
             left: 0;
             width: 0;
             height: 2px;
-            background: #007bff;
+            background: #6C63FF;
             transition: width 0.3s ease;
-        }
-
-        .nav-links a:hover {
-            color: #007bff;
         }
 
         .nav-links a:hover::after {
             width: 100%;
         }
 
-        /* Sections */
-        .scroll-section {
+        /* Hero Section */
+        .hero {
             min-height: 100vh;
-            padding: 6rem 2rem;
             display: flex;
             align-items: center;
-            background: #fff;
-        }
-
-        .scroll-section:nth-child(even) {
-            background: #f8f9fa;
-        }
-
-        .content-wrapper {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            align-items: center;
-            gap: 4rem;
-            width: 100%;
-        }
-
-        /* Scroll Animation Classes */
-        .fade-in-up {
-            opacity: 0;
-            transform: translateY(50px);
-            transition: all 1s ease-out;
-        }
-
-        .fade-in-left {
-            opacity: 0;
-            transform: translateX(-50px);
-            transition: all 1s ease-out;
-        }
-
-        .fade-in-right {
-            opacity: 0;
-            transform: translateX(50px);
-            transition: all 1s ease-out;
-        }
-
-        .scale-in {
-            opacity: 0;
-            transform: scale(0.9);
-            transition: all 1s ease-out;
-        }
-
-        /* Active states for animations */
-        .fade-in-up.active,
-        .fade-in-left.active,
-        .fade-in-right.active,
-        .scale-in.active {
-            opacity: 1;
-            transform: translate(0) scale(1);
-        }
-
-        .text-content {
-            flex: 1;
-        }
-
-        .image-wrapper {
-            flex: 1;
+            justify-content: center;
+            padding: 6rem 2rem 2rem;
+            position: relative;
             overflow: hidden;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
+            background: linear-gradient(45deg, #0a0a0a, #1a1a1a);
         }
 
-        .image-wrapper:hover {
-            transform: translateY(-5px);
-        }
-
-        /* Typography */
-        h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1.5rem;
-            color: #333;
-            line-height: 1.2;
-        }
-
-        h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            color: #333;
-        }
-
-        p {
-            font-size: 1.1rem;
-            margin-bottom: 2rem;
-            color: #666;
-        }
-
-        /* Images */
-        .image-wrapper img {
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
-            height: auto;
-            border-radius: 10px;
+            height: 100%;
+            background: radial-gradient(circle at center, rgba(108, 99, 255, 0.2), transparent);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            text-align: center;
+            max-width: 800px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero p {
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            color: #aaa;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease 0.2s backwards;
+        }
+
+        /* Cards Section */
+        .cards-container {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 4rem 0;
+            animation: fadeInUp 1s ease 0.4s backwards;
+        }
+
+        .card {
+            width: 300px;
+            height: 400px;
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+            transition: transform 0.5s ease;
+            cursor: pointer;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+        }
+
+        .card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
             transition: transform 0.5s ease;
         }
 
-        .image-wrapper:hover img {
-            transform: scale(1.05);
+        .card:hover img {
+            transform: scale(1.1);
         }
 
-        /* Buttons */
+        .card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                to bottom,
+                transparent,
+                rgba(0, 0, 0, 0.7)
+            );
+        }
+
+        /* Features Section */
+        .features {
+            padding: 6rem 2rem;
+            background: #0d0d0d;
+        }
+
+        .features h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .feature-card {
+            background: #1a1a1a;
+            padding: 2rem;
+            border-radius: 20px;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            background: #222;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #6C63FF;
+        }
+
+        .feature-card p {
+            color: #aaa;
+        }
+
+        /* Button Styles */
         .btn {
             display: inline-block;
-            padding: 1rem 2rem;
-            background: #007bff;
-            color: #fff;
+            padding: 1rem 2.5rem;
+            background: #6C63FF;
+            color: white;
             text-decoration: none;
-            border-radius: 5px;
-            font-weight: 500;
-            position: relative;
-            overflow: hidden;
+            border-radius: 30px;
+            font-weight: bold;
             transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            animation: fadeInUp 1s ease 0.6s backwards;
         }
 
         .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0,123,255,0.4);
+            background: #5b52ff;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(108, 99, 255, 0.3);
         }
 
-        .btn:active {
-            transform: translateY(-1px);
-        }
-
-        /* Progress Bar */
-        .scroll-progress {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: rgba(0,0,0,0.1);
-            z-index: 1000;
-        }
-
-        .progress-bar {
-            height: 100%;
-            width: 0;
-            background: #007bff;
-            transition: width 0.1s linear;
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         /* Responsive Design */
         @media (max-width: 768px) {
-            .content-wrapper {
-                flex-direction: column;
-                text-align: center;
-                gap: 2rem;
-            }
-
-            h1 {
-                font-size: 2.5rem;
-            }
-
-            .scroll-section {
-                padding: 4rem 1rem;
-            }
-
-            .image-wrapper {
-                order: -1;
+            .nav {
+                padding: 1rem;
             }
 
             .nav-links {
                 display: none;
+            }
+
+            .hero {
+                padding: 4rem 1rem 2rem;
+            }
+
+            .cards-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .card {
+                width: 100%;
+                max-width: 300px;
             }
         }
     </style>
 </head>
 <body>
     <!-- Navigation -->
-    <nav class="main-nav">
-        <div class="nav-container">
-            <a href="index.html" class="logo">Bloom</a>
-            <div class="nav-links">
-                <a href="index.html">Home</a>
-                <a href="about.html">About</a>
-                <a href="services.html">Services</a>
-                <a href="contact.html">Contact</a>
-            </div>
+    <nav class="nav">
+        <a href="index.html" class="logo">Bloom</a>
+        <div class="nav-links">
+            <a href="about.html">About</a>
+            <a href="services.html">Services</a>
+            <a href="contact.html">Contact</a>
         </div>
     </nav>
 
-    <!-- Progress Bar -->
-    <div class="scroll-progress">
-        <div class="progress-bar"></div>
-    </div>
-
-    <!-- Main Content -->
-    <div class="scroll-container">
-        <!-- Hero Section -->
-        <section class="scroll-section">
-            <div class="content-wrapper">
-                <div class="text-content fade-in-left">
-                    <h1>Transform Your Digital Wellbeing</h1>
-                    <p>Experience a new way of mindful technology use with our innovative platform.</p>
-                    <a href="#learn-more" class="btn">Learn More</a>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Transform Your Digital Life</h1>
+            <p>Experience mindful technology use with our innovative platform</p>
+            <a href="#features" class="btn">Explore Features</a>
+            
+            <div class="cards-container">
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=600&q=80" 
+                         alt="Digital Wellness">
                 </div>
-                <div class="image-wrapper fade-in-right">
-                    <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=500&q=80" 
-                         alt="Digital Wellness"
-                         width="500"
-                         height="300"
-                         loading="lazy">
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1542435503-956c469947f6?w=600&q=80" 
+                         alt="Mindfulness">
+                </div>
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1434494878577-86c23bcb06b9?w=600&q=80" 
+                         alt="Balance">
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Features Section -->
-        <section class="scroll-section">
-            <div class="content-wrapper">
-                <div class="image-wrapper fade-in-left">
-                    <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=500&q=80" 
-                         alt="Features"
-                         width="500"
-                         height="300"
-                         loading="lazy">
-                </div>
-                <div class="text-content fade-in-right">
-                    <h2>Mindful Technology</h2>
-                    <p>Balance your digital life with purpose and intention through our innovative features.</p>
-                    <a href="services.html" class="btn">Our Services</a>
-                </div>
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <h2>Our Features</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <h3>Screen Time Analytics</h3>
+                <p>Track and optimize your digital usage patterns with AI-powered insights.</p>
             </div>
-        </section>
-
-        <!-- Benefits Section -->
-        <section class="scroll-section">
-            <div class="content-wrapper">
-                <div class="text-content fade-in-left">
-                    <h2>Expert Guidance</h2>
-                    <p>Learn from wellness professionals and join a community of mindful technology users.</p>
-                    <a href="about.html" class="btn">About Us</a>
-                </div>
-                <div class="image-wrapper fade-in-right">
-                    <img src="https://images.unsplash.com/photo-1552581234-26160f608093?w=500&q=80" 
-                         alt="Benefits"
-                         width="500"
-                         height="300"
-                         loading="lazy">
-                </div>
+            <div class="feature-card">
+                <h3>Mindful Breaks</h3>
+                <p>Regular reminders and guided breaks for better digital wellness.</p>
             </div>
-        </section>
-    </div>
+            <div class="feature-card">
+                <h3>Focus Mode</h3>
+                <p>Enhanced concentration tools to minimize digital distractions.</p>
+            </div>
+        </div>
+    </section>
 
     <script>
-        // Scroll Progress
-        window.addEventListener('scroll', () => {
-            const scrolled = window.pageYOffset;
-            const total = document.documentElement.scrollHeight - window.innerHeight;
-            const progress = (scrolled / total) * 100;
-            document.querySelector('.progress-bar').style.width = progress + '%';
-        });
-
-        // Scroll Animation Observer
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
-                }
-            });
-        }, {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        });
-
-        // Observe all animated elements
-        document.querySelectorAll('.fade-in-up, .fade-in-left, .fade-in-right, .scale-in')
-            .forEach(element => observer.observe(element));
-
-        // Smooth Scroll for anchor links
+        // Smooth scroll for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
